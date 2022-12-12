@@ -6,7 +6,7 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 19:19:55 by oandelin          #+#    #+#             */
-/*   Updated: 2022/12/12 15:04:52 by oandelin         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:00:16 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static	size_t	ft_countwords(char const *s, char c)
 	size_t	i;
 
 	i = 0;
-	count = 1;
-	while (s[i] == c && s[i] != 0)
+	count = 0;
+	while (s[i] == c)
 			i++;
 	while (s[i])
 	{	
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] != '\0'))
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			count++;
 		i++;
 	}
@@ -74,6 +74,7 @@ static char	**ft_stringtoarr(char **strarr, const char *s, char c)
 {
 	size_t	strnr;
 	size_t	i;
+	size_t	wordlen;
 
 	strnr = 0;
 	i = 0;
@@ -81,13 +82,14 @@ static char	**ft_stringtoarr(char **strarr, const char *s, char c)
 	{
 		if (s[i] != c)
 		{
-			strarr[strnr] = ft_substr(s, i, ft_getwordlen(s + i, c));
+			wordlen = ft_getwordlen(s + i, c);
+			strarr[strnr] = ft_substr(s, i, wordlen);
 			if (!strarr[strnr])
 			{
 				ft_freearr(strarr);
 				return (NULL);
 			}
-			i += ft_strlen(strarr[strnr]);
+			i += wordlen;
 			strnr++;
 		}
 		else
@@ -105,12 +107,10 @@ static char	**ft_stringtoarr(char **strarr, const char *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**strarr;
-	size_t	wordcount;
 
 	if (!s)
 		return (NULL);
-	wordcount = ft_countwords(s, c);
-	strarr = (char **) malloc(sizeof(char *) * (wordcount));
+	strarr = (char **) malloc(sizeof(char *) * (ft_countwords(s, c) + 1));
 	if (!strarr)
 		return (NULL);
 	strarr = ft_stringtoarr(strarr, s, c);
