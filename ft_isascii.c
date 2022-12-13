@@ -6,9 +6,11 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:20:21 by oandelin          #+#    #+#             */
-/*   Updated: 2022/12/09 17:05:07 by oandelin         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:44:31 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 // ft_isascii
 // checks if c is an ASCII character

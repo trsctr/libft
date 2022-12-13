@@ -6,7 +6,7 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:46:06 by oandelin          #+#    #+#             */
-/*   Updated: 2022/12/13 15:35:16 by oandelin         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:46:18 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_putstr_fd(char *s, int fd);
 
 //		LIST
 
-t_list *ft_lstnew(void	*content);
+t_list	*ft_lstnew(void	*content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
