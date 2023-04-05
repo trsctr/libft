@@ -6,33 +6,89 @@
 #    By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 16:51:49 by oandelin          #+#    #+#              #
-#    Updated: 2022/12/05 18:48:46 by oandelin         ###   ########.fr        #
+#    Updated: 2023/04/04 22:54:51 by oandelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= libft.a
-SRCS 	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-		ft_toupper.c ft_tolower.c ft_strlen.c ft_memset.c ft_bzero.c \
-		ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_strchr.c \
-		ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
-		ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
-		ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c 
-OBJS	= $(SRCS:.c=.o)
+INCLUDE	= include/
+SRCDIR	= src/
+OBJDIR	= obj/
+HEADER	= $(NAME:.a=.h)
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
+SRCFILES 	= 	ft_isalpha \
+				ft_isdigit \
+				ft_isalnum \
+				ft_isascii \
+				ft_isprint \
+				ft_toupper \
+				ft_tolower \
+				ft_strlen \
+				ft_memset \
+				ft_bzero \
+				ft_memcpy \
+				ft_memmove \
+				ft_strlcpy \
+				ft_strlcat \
+				ft_strchr \
+				ft_strrchr \
+				ft_strncmp \
+				ft_memchr \
+				ft_memcmp \
+				ft_strnstr \
+				ft_atoi \
+				ft_calloc \
+				ft_strdup \
+				ft_substr \
+				ft_strjoin \
+				ft_strtrim \
+				ft_split \
+				ft_itoa \
+				ft_strmapi \
+				ft_striteri \
+				ft_putchar_fd \
+				ft_putstr_fd \
+				ft_putendl_fd \
+				ft_putnbr_fd \
+				ft_putuint_fd \
+				ft_get_next_line \
+				ft_lstnew \
+				ft_lstlast \
+				ft_lstadd_back \
+				ft_lstadd_front \
+				ft_lstclear \
+				ft_lstdelone \
+				ft_lstiter \
+				ft_lstsize \
+				ft_lstmap \
+				ft_printf \
+				ft_printf_parse \
+				ft_printf_convert_hex \
+				ft_printf_convert_uidcs
+SRCS 	= $(addprefix $(SRCDIR), $(addsuffix .c, $(SRCFILES)))
+OBJS 	= $(addsuffix .o, $(SRCFILES))
+
 
 all: $(NAME)
 
 $(NAME): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
-	ar rcs $(NAME) $(OBJS)
+	@echo "Compiling.."
+	@$(CC) $(CFLAGS) -I$(INCLUDE) -c $(SRCS)
+	@echo "Creating libft.a .."
+	@ar rcs $(NAME) $(OBJS)
+	@echo "Success!"
+
 
 clean:
-	rm -f $(OBJS)
+	@echo "Cleaning libft object files.."
+	@rm -f $(OBJS)
+	@echo "Object files deleted"
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "Removing libft.a"
+	@rm -f $(NAME)
+	@echo "Libft.a deleted"
 
 re: fclean all
 
